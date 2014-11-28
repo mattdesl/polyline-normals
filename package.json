@@ -10,7 +10,7 @@
     "url": "https://github.com/mattdesl"
   },
   "dependencies": {
-    "polyline-miter-util": "^1.0.0"
+    "polyline-miter-util": "^1.0.1"
   },
   "devDependencies": {
     "gl-vec2": "^1.0.0",
