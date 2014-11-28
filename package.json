@@ -1,6 +1,6 @@
 {
   "name": "polyline-normals",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "gets miter normals for a 2D polyline",
   "main": "index.js",
   "license": "MIT",
