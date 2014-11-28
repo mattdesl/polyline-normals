@@ -1,0 +1,46 @@
+{
+  "name": "polyline-normals",
+  "version": "1.0.0",
+  "description": "gets miter normals for a 2D polyline",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "gl-vec2": "^1.0.0",
+    "polyline-miter-util": "^1.0.0"
+  },
+  "devDependencies": {
+    "three-orbit-viewer": "^69.2.2",
+    "adaptive-bezier-curve": "^1.0.3",
+    "arc-to": "^1.0.0",
+    "canvas-testbed": "^1.0.3",
+    "domready": "^1.0.7",
+    "inherits": "^2.0.1",
+    "normalize-path-scale": "^1.1.1",
+    "three": "^0.69.0",
+    "three-orbit-viewer": "^69.2.1",
+    "three-simplicial-complex": "^69.0.3"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "polyline",
+    "mesh",
+    "webgl",
+    "glsl",
+    "stackgl"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/polyline-normals.git"
+  },
+  "homepage": "https://github.com/mattdesl/polyline-normals",
+  "bugs": {
+    "url": "https://github.com/mattdesl/polyline-normals/issues"
+  }
+}
