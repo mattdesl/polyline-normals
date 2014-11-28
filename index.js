@@ -1,11 +1,9 @@
-var vec = require('./vecutil')
+var util = require('polyline-miter-util')
 
 var lineA = [0, 0]
 var lineB = [0, 0]
 var tangent = [0, 0]
 var miter = [0, 0]
-
-var util = require('polyline-miter-util')
 
 module.exports = function(points) {
     var total = points.length
@@ -36,13 +34,29 @@ module.exports = function(points) {
 
             //stores tangent & miter
             var miterLen = util.computeMiter(tangent, miter, lineA, lineB, 1)
-
-            //get orientation
-            var flip = (vec.dot(tangent, curNormal) < 0) ? -1 : 1
-
             addNext(out, miter, miterLen)
         }
     }
+
+    //if the polyline is a closed loop, clean up the last normal
+    if (points.length > 2 
+            && points[0][0] === points[total-1][0] 
+            && points[0][1] === points[total-1][1]) {
+        var last2 = points[total-2]
+        var cur2 = points[0]
+        var next2 = points[1]
+
+        util.direction(lineA, cur2, last2)
+        util.direction(lineB, next2, cur2)
+        util.normal(curNormal, lineA)
+        
+        var miterLen2 = util.computeMiter(tangent, miter, lineA, lineB, 1)
+        out[0][0] = miter.slice()
+        out[total-1][0] = miter.slice()
+        out[0][1] = miterLen2
+        out[total-1][1] = miterLen2
+    }
+
     return out
 }
 

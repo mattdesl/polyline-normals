@@ -8,27 +8,28 @@ var curve = require('adaptive-bezier-curve')
 
 var paths = []
 paths.push( [ [40, 40], [80, 30], [80, 60], [125, 33], [115, 100], [50, 120], [70, 150] ] )
-paths.push( arc(100, 100, 25, 0, Math.PI*2, false) )
+paths.push( arc(130, 120, 25, 0, Math.PI*2, false) )
 paths.push( curve([40, 40], [70, 100], [120, 20], [200, 40], 5) )
-
-// TODO: support 'close'
-// paths.push( [ [50, 50], [100, 50], [100, 100], [50, 100], [50, 50] ] )
+paths.push( [ [0, 122], [0, 190], [90, 190], [0, 122] ] )
+paths.push( [ [50, 50], [100, 50], [100, 100], [50, 100], [50, 50] ] )
+paths.push( [ [30, -60], [80, 10] ] )
 
 function render(ctx, width, height) {
     ctx.clearRect(0,0,width,height)
 
+    //draw each path with a bit of an offset
     ctx.save()
-    draw(ctx, paths[0])
-
-    ctx.translate(150, 0)
-    draw(ctx, paths[1], true)
-
-    ctx.translate(200, 0)
-    draw(ctx, paths[2])
+    paths.forEach(function(path, i) {
+        var cols = 3
+        var x = i % cols,
+            y = ~~(i / cols)
+        ctx.translate(x * 50, y * 50)
+        draw(ctx, path)
+    })
     ctx.restore()
 }
 
-function draw(ctx, path, circle) {
+function draw(ctx, path) {
     var thick = 25,
         halfThick = thick / 2
     var psize = 4
@@ -37,14 +38,10 @@ function draw(ctx, path, circle) {
     var top = []
     var bot = []
 
-    var normals = getNormals(path, true)
+    //get the normals of the path
+    var normals = getNormals(path)
 
-    //close the loop
-    if (circle) {
-        normals[0] = [[-1, 0], 1]
-        normals[normals.length-1] = [[-1, 0], 1]
-    }
-
+    //draw our expanded vertices for each point in the path
     ctx.globalAlpha = 0.15
     path.forEach(function(p, i) {
         var attrib = normals[i]
@@ -67,6 +64,7 @@ function draw(ctx, path, circle) {
         bot.push(tmp.slice())
     })
 
+    //edges
     ctx.globalAlpha = 1
     ctx.beginPath()
     top.forEach(function(t) {
