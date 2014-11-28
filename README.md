@@ -9,11 +9,11 @@ Computes the normals of a polyline, using miter joins where multiple segments me
 ```js
 var getNormals = require('polyline-normals')
 
-//a triangle, closed
-var path = [ [0, 122], [0, 190], [90, 190], [0, 122] ]
+//a triangle
+var path = [ [0, 122], [0, 190], [90, 190] ]
 
-//get the normals
-var normals = getNormals(path)
+//get the normals, flag as closed loop
+var normals = getNormals(path, true)
 
 //now draw our thick line in 2D/3D/etc
 ```
@@ -30,7 +30,7 @@ Coming soon.
 
 [![NPM](https://nodei.co/npm/polyline-normals.png)](https://nodei.co/npm/polyline-normals/)
 
-#### `normals(path)`
+#### `normals(path[, closed])`
 
 For the given path, produces a new array of the same length with normal information for each point. The data contains a normal, `[nx, ny]` and the length of the miter (default to 1.0 where no join occurs). 
 
@@ -40,6 +40,8 @@ For the given path, produces a new array of the same length with normal informat
     [ [nx, ny], miterLength ]
 ]
 ```
+
+If `closed` is true, it assumes a segment will be drawn from the last point to the first point, and adjusts those normals accordingly.
 
 ## License
 

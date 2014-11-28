@@ -5,12 +5,15 @@ var lineB = [0, 0]
 var tangent = [0, 0]
 var miter = [0, 0]
 
-module.exports = function(points) {
-    var total = points.length
-
+module.exports = function(points, closed) {
     var curNormal = null
     var out = []
+    if (closed) {
+        points = points.slice()
+        points.push(points[0])
+    }
 
+    var total = points.length
     for (var i=1; i<total; i++) {
         var last = points[i-1]
         var cur = points[i]
@@ -39,9 +42,7 @@ module.exports = function(points) {
     }
 
     //if the polyline is a closed loop, clean up the last normal
-    if (points.length > 2 
-            && points[0][0] === points[total-1][0] 
-            && points[0][1] === points[total-1][1]) {
+    if (points.length > 2 && closed) {
         var last2 = points[total-2]
         var cur2 = points[0]
         var next2 = points[1]
@@ -55,6 +56,7 @@ module.exports = function(points) {
         out[total-1][0] = miter.slice()
         out[0][1] = miterLen2
         out[total-1][1] = miterLen2
+        out.pop()
     }
 
     return out
