@@ -1,15 +1,20 @@
-# polyline-mesh
+# polyline-normals
 
-[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-A utility for polyline rendering purely on the GPU.
+Not complete.
+
+Produces normals for a polyline, with their miter lengths (in the case of a join). 
 
 For more complex line joins and end caps, see [extrude-polyline](https://nodei.co/npm/extrude-polyline/) (which builds a triangulated geometry). At some point, some of the code may be unified between these two modules. 
 
+## example
+
+This is useful for expanding thick 2D lines in a vertex shader.
 ## Usage
 
-[![NPM](https://nodei.co/npm/polyline-mesh.png)](https://nodei.co/npm/polyline-mesh/)
+[![NPM](https://nodei.co/npm/polyline-normals.png)](https://nodei.co/npm/polyline-normals/)
 
 ## License
 
-MIT, see [LICENSE.md](http://github.com/mattdesl/polyline-mesh/blob/master/LICENSE.md) for details.
+MIT, see [LICENSE.md](http://github.com/mattdesl/polyline-normals/blob/master/LICENSE.md) for details.
