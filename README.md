@@ -32,7 +32,7 @@ Coming soon.
 
 #### `normals(path)`
 
-For the given path, produces a new array of the same length with normal information for each point. The data contains a normal, `[nx, ny]` and the length of the miter (default to 1.0). 
+For the given path, produces a new array of the same length with normal information for each point. The data contains a normal, `[nx, ny]` and the length of the miter (default to 1.0 where no join occurs). 
 
 ```js
 [ 
