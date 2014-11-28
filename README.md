@@ -22,9 +22,9 @@ See [the 2d test](test-2d.js) for an example of how these lines would be extrude
 
 For more complex line joins and end caps, see [extrude-polyline](https://nodei.co/npm/extrude-polyline/) (which builds an indexed mesh). 
 
-## ThreeJS Example
+## Shader Example
 
-Coming soon.
+For an example of how to use this within a shader, see [three-line-2d](https://nodei.co/npm/three-line-2d/).
 
 ## Usage
 
