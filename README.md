@@ -12,7 +12,7 @@ var getNormals = require('polyline-normals')
 //a triangle
 var path = [ [0, 122], [0, 190], [90, 190] ]
 
-//get the normals, flag as closed loop
+//get the normals as a closed loop
 var normals = getNormals(path, true)
 
 //now draw our thick line in 2D/3D/etc
