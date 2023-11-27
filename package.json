@@ -3,6 +3,7 @@
   "version": "2.0.2",
   "description": "gets miter normals for a 2D polyline",
   "main": "index.js",
+  "types": "index.d.ts",
   "license": "MIT",
   "author": {
     "name": "Matt DesLauriers",

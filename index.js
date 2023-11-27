@@ -5,6 +5,11 @@ var lineB = [0, 0]
 var tangent = [0, 0]
 var miter = [0, 0]
 
+/**
+ * @param {[number, number][]} points 
+ * @param {boolean?} closed 
+ * @returns {[[number, number], number][]}
+ */
 module.exports = function(points, closed) {
     var curNormal = null
     var out = []
